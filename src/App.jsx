@@ -18,7 +18,10 @@ export default function App() {
           </button>
         </div>
       </header>
-      <TweetBox />
+
+      <div className="pt-10 flex-1 flex flex-col items-center mt-4">
+        <TweetBox />
+      </div>
 
     </div>
   )
