@@ -1,3 +1,4 @@
+import { UserIcon, UserAddIcon } from '@heroicons/react/solid';
 import './App.css'
 import TweetBox from './components/TweetBox'
 
