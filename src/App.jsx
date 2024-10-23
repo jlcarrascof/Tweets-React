@@ -8,6 +8,9 @@ export default function App() {
         <h1 className="text-3xl font-bold text-center">Twitter/X Clone</h1>
       </header>
       <TweetBox />
+      <footer className="bg-gray-800 text-white text-center p-4 mt-auto">
+
+      </footer>
     </div>
   )
 }
