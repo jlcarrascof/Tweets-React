@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 export default function TweetBox() {
     return (
       <div className="border p-4 rounded-lg shadow-md max-w-md mx-auto mt-4">
