@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 export default function TweetBox() {
   const [tweet, setTweet] = useState('');
-  const maxLength = 280;
+  const maxLength = 150;
 
   const handleTweetChange = (e) => {
     if (e.target.value.length <= maxLength) {
