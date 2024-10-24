@@ -7,6 +7,7 @@ export default function TweetBox() {
   return (
     <div className="border p-4 rounded-lg shadow-md max-w-md mx-auto mt-4">
       <textarea
+        value={tweet}
         className="w-full border p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
         placeholder="¿What's happening?"
       ></textarea>
