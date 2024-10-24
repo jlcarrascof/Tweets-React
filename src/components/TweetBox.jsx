@@ -22,7 +22,9 @@ export default function TweetBox() {
       <div className="text-right mt-2 text-gray-600">
         {tweet.length}/{maxLength} Chars.
       </div>
-      <button className="bg-blue-500 text-white py-2 px-4 rounded-md mt-2 hover:bg-blue-600">
+      <button className={`bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 ${
+      tweet.length === 0 ? 'opacity-50 cursor-not-allowed' : ''
+      }`} disabled={tweet.length === 0}>
         Send Tweet
       </button>
     </div>
