@@ -7,7 +7,7 @@ export default function TweetBox() {
 
   const handleTweetChange = (e) => {
     if (e.target.value.length <= maxLength) {
-        setTweet(e.target.value); // Actualiza el tweet solo si está dentro del límite
+        setTweet(e.target.value);
     }
   };
 
@@ -15,10 +15,13 @@ export default function TweetBox() {
     <div className="border p-4 rounded-lg shadow-md max-w-md mx-auto mt-4">
       <textarea
         value={tweet}
-        onChange={(e) => setTweet(e.target.value)}
+        onChange={handleTweetChange}
         className="w-full border p-2 rounded-md focus:outline-none focus:ring focus:border-blue-300"
         placeholder="¿What's happening?"
       ></textarea>
+      <div className="text-right mt-2 text-gray-600">
+        {tweet.length}/{maxLength} Chars.
+      </div>
       <button className="bg-blue-500 text-white py-2 px-4 rounded-md mt-2 hover:bg-blue-600">
         Send Tweet
       </button>
