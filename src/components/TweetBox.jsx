@@ -5,6 +5,12 @@ export default function TweetBox() {
   const [tweet, setTweet] = useState('');
   const maxLength = 280;
 
+  const handleTweetChange = (e) => {
+    if (e.target.value.length <= maxLength) {
+        setTweet(e.target.value); // Actualiza el tweet solo si está dentro del límite
+    }
+  };
+
   return (
     <div className="border p-4 rounded-lg shadow-md max-w-md mx-auto mt-4">
       <textarea
