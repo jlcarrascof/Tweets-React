@@ -31,6 +31,14 @@ export default function App() {
         <TweetBox onTweetSubmit={addTweet} />
       </div>
 
+      <div className="max-w-md w-full p-4 space-y-4">
+        {tweets.map((tweet, index) => (
+          <div key={index} className="border p-4 rounded-lg bg-white">
+            {tweet}
+          </div>
+        ))}
+      </div>
+
       <footer className="bg-gray-800 text-white text-center p-4 fixed bottom-0 left-0 w-full">
         <p>&copy; 2024 Twitter/X Clone - All rights reserved.</p>
       </footer>
