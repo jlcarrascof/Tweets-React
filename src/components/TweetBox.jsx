@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function TweetBox() {
+export default function TweetBox({ onTweetSubmit }) {
   const [tweet, setTweet] = useState('');
   const maxLength = 150;
 
