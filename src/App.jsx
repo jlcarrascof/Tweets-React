@@ -33,10 +33,10 @@ export default function App() {
         <div className="mt-8 w-full max-w-md space-y-4">
           {tweets.map((tweet, index) => (
             <div key={index} className="border p-4 rounded-lg bg-white shadow-md">
-              <p><strong>Usuario:</strong> @{tweet.user}</p>
-              <p><strong>Cuerpo del Tweet:</strong> {tweet.body}</p>
+              <p><strong>User:</strong> @{tweet.user}</p>
+              <p><strong>Tweet:</strong> {tweet.body}</p>
               <p className="text-sm text-gray-500">
-                <strong>Fecha:</strong> {tweet.date} - <strong>Hora:</strong> {tweet.time}
+                <strong>Date:</strong> {tweet.date} - <strong>Time:</strong> {tweet.time}
               </p>
             </div>
           ))}
