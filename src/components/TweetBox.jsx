@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
 
-export default function TweetBox() {
+export default function TweetBox({ onTweetSubmit, tweetCount }) {
   const [tweet, setTweet] = useState('');
-  const maxLength = 280;
+  const maxLength = 150;
 
   const handleTweetChange = (e) => {
     if (e.target.value.length <= maxLength) {
       setTweet(e.target.value);
     }
+  };
+
+  const handleTweetSubmit = () => {
+    const now = new Date();
+    const newTweet = {
+      user: 'username',
+      body: tweet,
+      date: now.toLocaleDateString(),
+      time: now.toLocaleTimeString(),
+    };
+    onTweetSubmit(newTweet);
+    setTweet('');
   };
 
   return (
@@ -22,6 +34,7 @@ export default function TweetBox() {
         {tweet.length}/{maxLength} Chars.
       </div>
       <button
+        onClick={handleTweetSubmit}
         className={`bg-blue-500 text-white py-2 px-4 rounded-md mt-2 hover:bg-blue-600 ${
         tweet.length === 0 ? 'opacity-50 cursor-not-allowed' : ''
         }`}
@@ -29,6 +42,10 @@ export default function TweetBox() {
       >
         Send Tweet
       </button>
+
+      <div className="mt-4 text-gray-600 text-center">
+        Tweets Sent: {tweetCount}
+      </div>
     </div>
   );
 }

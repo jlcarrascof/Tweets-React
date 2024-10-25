@@ -1,8 +1,16 @@
-import { UserIcon, UserPlusIcon } from '@heroicons/react/24/solid';
+import { useState } from 'react'
+import { UserIcon, UserPlusIcon } from '@heroicons/react/24/solid'
 import './App.css'
 import TweetBox from './components/TweetBox'
 
 export default function App() {
+
+  const [tweets, setTweets] = useState([])
+
+  const addTweet = (newTweet) => {
+    setTweets([newTweet, ...tweets]);
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <header className="bg-blue-500 text-white flex justify-between items-center p-4 fixed top-0 left-0 w-full z-10">
@@ -20,7 +28,19 @@ export default function App() {
       </header>
 
       <div className="pt-10 flex-1 flex flex-col items-center mt-4">
-        <TweetBox />
+        <TweetBox onTweetSubmit={addTweet} tweetCount={tweets.length} />
+
+        <div className="mt-8 w-full max-w-md space-y-4">
+          {tweets.map((tweet, index) => (
+            <div key={index} className="border p-4 rounded-lg bg-white shadow-md">
+              <p><strong>Usuario:</strong> @{tweet.user}</p>
+              <p><strong>Cuerpo del Tweet:</strong> {tweet.body}</p>
+              <p className="text-sm text-gray-500">
+                <strong>Fecha:</strong> {tweet.date} - <strong>Hora:</strong> {tweet.time}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
 
       <footer className="bg-gray-800 text-white text-center p-4 fixed bottom-0 left-0 w-full">
