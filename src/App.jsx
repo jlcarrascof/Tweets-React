@@ -28,7 +28,7 @@ export default function App() {
       </header>
 
       <div className="pt-10 flex-1 flex flex-col items-center mt-4">
-        <TweetBox onTweetSubmit={addTweet} />
+        <TweetBox onTweetSubmit={addTweet} tweetCount={tweets.length} />
 
         <div className="mt-8 w-full max-w-md space-y-4">
           {tweets.map((tweet, index) => (
