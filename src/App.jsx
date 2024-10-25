@@ -8,7 +8,7 @@ export default function App() {
   const [tweets, setTweets] = useState([])
 
   const addTweet = (newTweet) => {
-    setTweets([newTweet, ...tweets]); // Añadimos el nuevo tweet al principio del array
+    setTweets([newTweet, ...tweets]);
   }
 
   return (
@@ -28,7 +28,7 @@ export default function App() {
       </header>
 
       <div className="pt-10 flex-1 flex flex-col items-center mt-4">
-        <TweetBox />
+        <TweetBox onTweetSubmit={addTweet} />
       </div>
 
       <footer className="bg-gray-800 text-white text-center p-4 fixed bottom-0 left-0 w-full">
