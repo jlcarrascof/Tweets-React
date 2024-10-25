@@ -29,14 +29,14 @@ export default function App() {
 
       <div className="pt-10 flex-1 flex flex-col items-center mt-4">
         <TweetBox onTweetSubmit={addTweet} />
-      </div>
 
-      <div className="max-w-md w-full p-4 space-y-4">
-        {tweets.map((tweet, index) => (
-          <div key={index} className="border p-4 rounded-lg bg-white">
-            {tweet}
-          </div>
-        ))}
+        <div className="mt-8 w-full max-w-md space-y-4">
+          {tweets.map((tweet, index) => (
+            <div key={index} className="border p-4 rounded-lg bg-white shadow-md">
+              {tweet}
+            </div>
+          ))}
+        </div>
       </div>
 
       <footer className="bg-gray-800 text-white text-center p-4 fixed bottom-0 left-0 w-full">
