@@ -10,6 +10,14 @@ export default function TweetBox({ onTweetSubmit }) {
     }
   };
 
+  const handleTweetSubmit = (e) => {
+    e.preventDefault();
+    if (tweet.length > 0) {
+      onTweetSubmit(tweet);  // Llamamos a la función onTweetSubmit para pasarle el nuevo tweet a App.jsx
+      setTweet('');  // Limpiamos la caja de texto después de enviar el tweet
+    }
+  }
+
   return (
     <div className="border p-4 rounded-lg shadow-md max-w-md mx-auto mt-4">
       <textarea
