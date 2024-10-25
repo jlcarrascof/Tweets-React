@@ -30,6 +30,7 @@ export default function TweetBox({ onTweetSubmit }) {
         {tweet.length}/{maxLength} Chars.
       </div>
       <button
+        onClick={handleTweetSubmit}
         className={`bg-blue-500 text-white py-2 px-4 rounded-md mt-2 hover:bg-blue-600 ${
         tweet.length === 0 ? 'opacity-50 cursor-not-allowed' : ''
         }`}
