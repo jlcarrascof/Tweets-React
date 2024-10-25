@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 export default function TweetBox() {
   const [tweet, setTweet] = useState('');
+  const [tweets, setTweets] = useState([]); // For my List of Tweets
   const maxLength = 150;
 
   const handleTweetChange = (e) => {
