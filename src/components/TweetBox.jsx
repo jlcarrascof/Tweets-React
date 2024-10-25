@@ -2,21 +2,11 @@ import React, { useState } from 'react';
 
 export default function TweetBox() {
   const [tweet, setTweet] = useState('');
-  const [tweets, setTweets] = useState([]); // For my List of Tweets
   const maxLength = 150;
 
   const handleTweetChange = (e) => {
     if (e.target.value.length <= maxLength) {
       setTweet(e.target.value);
-    }
-  };
-
-  const handleTweetSubmit = (event) => {
-    event.preventDefault();
-
-    if (tweetContent.length > 0 && tweetContent.length <= 150) {
-      setTweets([tweetContent, ...tweets]);  // Add the new tweet at the beginning of array
-      setTweetContent('');  // We clean the TweetBox
     }
   };
 
