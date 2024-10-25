@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function TweetBox({ onTweetSubmit }) {
+export default function TweetBox({ onTweetSubmit, tweetCount }) {
   const [tweet, setTweet] = useState('');
   const maxLength = 150;
 
@@ -42,6 +42,10 @@ export default function TweetBox({ onTweetSubmit }) {
       >
         Send Tweet
       </button>
+
+      <div className="mt-4 text-gray-600 text-center">
+        Tweets Sent: {tweetCount}
+      </div>
     </div>
   );
 }
