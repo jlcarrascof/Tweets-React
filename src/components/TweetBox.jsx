@@ -11,6 +11,15 @@ export default function TweetBox() {
     }
   };
 
+  const handleTweetSubmit = (event) => {
+    event.preventDefault();
+
+    if (tweetContent.length > 0 && tweetContent.length <= 150) {
+      setTweets([tweetContent, ...tweets]);  // Add the new tweet at the beginning of array
+      setTweetContent('');  // We clean the TweetBox
+    }
+  };
+
   return (
     <div className="border p-4 rounded-lg shadow-md max-w-md mx-auto mt-4">
       <textarea
