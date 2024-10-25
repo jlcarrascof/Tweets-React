@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { UserIcon, UserPlusIcon } from '@heroicons/react/24/solid';
 import './App.css'
 import TweetBox from './components/TweetBox'
