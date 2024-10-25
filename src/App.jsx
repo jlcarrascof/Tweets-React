@@ -1,12 +1,15 @@
-import { useState } from 'react';
-import { UserIcon, UserPlusIcon } from '@heroicons/react/24/solid';
+import { useState } from 'react'
+import { UserIcon, UserPlusIcon } from '@heroicons/react/24/solid'
 import './App.css'
 import TweetBox from './components/TweetBox'
 
 export default function App() {
 
-  const [tweets, setTweets] = useState([]);
+  const [tweets, setTweets] = useState([])
 
+  const addTweet = (newTweet) => {
+    setTweets([newTweet, ...tweets]); // Añadimos el nuevo tweet al principio del array
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
