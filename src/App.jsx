@@ -38,6 +38,9 @@ export default function App() {
               <p className="text-sm text-gray-500">
                 <strong>Date:</strong> {tweet.date} - <strong>Time:</strong> {tweet.time}
               </p>
+              <div className="flex justify-between mt-4">
+
+              </div>
             </div>
           ))}
         </div>
