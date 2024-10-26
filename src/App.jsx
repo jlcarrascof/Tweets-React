@@ -39,12 +39,19 @@ export default function App() {
                 <strong>Date:</strong> {tweet.date} - <strong>Time:</strong> {tweet.time}
               </p>
               <div className="flex justify-between mt-4">
-              <button
-                className="flex items-center text-blue-500 hover:text-blue-700"
-                onClick={() => handleLike(index)}
-              >
-                Like 👍 <span className="ml-2">{tweet.likes}</span>
-              </button>
+                <button
+                  className="flex items-center text-blue-500 hover:text-blue-700"
+                  onClick={() => handleLike(index)}
+                >
+                  Like 👍 <span className="ml-2">{tweet.likes}</span>
+                </button>
+
+                <button
+                  className="flex items-center text-green-500 hover:text-green-700"
+                  onClick={() => handleRetweet(index)}
+                >
+                  Retweet 🔁 <span className="ml-2">{tweet.retweets}</span>
+                </button>
               </div>
             </div>
           ))}
