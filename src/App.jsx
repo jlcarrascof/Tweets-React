@@ -8,7 +8,12 @@ export default function App() {
   const [tweets, setTweets] = useState([])
 
   const addTweet = (newTweet) => {
-    setTweets([newTweet, ...tweets]);
+    const tweetWithInteractions = {
+      ...newTweet,
+      likes: 0,        // Añadimos el contador de Likes
+      retweets: 0      // Añadimos el contador de Retweets
+    }
+    setTweets([tweetWithInteractions, ...tweets]);
   }
 
   return (
