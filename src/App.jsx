@@ -10,8 +10,8 @@ export default function App() {
   const addTweet = (newTweet) => {
     const tweetWithInteractions = {
       ...newTweet,
-      likes: 0,        // Añadimos el contador de Likes
-      retweets: 0      // Añadimos el contador de Retweets
+      likes: 0,
+      retweets: 0
     }
     setTweets([tweetWithInteractions, ...tweets]);
   }
