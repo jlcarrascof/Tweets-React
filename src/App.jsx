@@ -54,7 +54,7 @@ export default function App() {
                 <span className="font-bold text-gray-800">@{tweet.user}</span>
                 <span className="text-sm text-gray-500">{tweet.date} - {tweet.time}</span>
               </div>
-              <div className="text-gray-700 text-base mb-4 border-b">
+              <div className="text-gray-700 text-base mb-4 border-b pb-4">
                 {tweet.body}
               </div>
               <div className="flex justify-between mt-4">
