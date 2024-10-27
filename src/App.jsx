@@ -51,13 +51,9 @@ export default function App() {
           {tweets.map((tweet, index) => (
             <div key={index} className="border p-4 rounded-lg bg-white shadow-md">
               <div className="flex justify-between items-center border-b pb-2 mb-2">
-
+                <span className="font-bold text-gray-800">@{tweet.user}</span>
               </div>
-              <p><strong>User:</strong> @{tweet.user}</p>
               <p><strong>Tweet:</strong> {tweet.body}</p>
-              <p className="text-sm text-gray-500">
-                <strong>Date:</strong> {tweet.date} - <strong>Time:</strong> {tweet.time}
-              </p>
               <div className="flex justify-between mt-4">
                 <button
                   className="flex items-center text-blue-500 hover:text-blue-700 transition duration-200 ease-in-out transform hover:scale-110"
