@@ -50,6 +50,9 @@ export default function App() {
         <div className="mt-8 w-full max-w-md space-y-4">
           {tweets.map((tweet, index) => (
             <div key={index} className="border p-4 rounded-lg bg-white shadow-md">
+              <div className="flex justify-between items-center border-b pb-2 mb-2">
+
+              </div>
               <p><strong>User:</strong> @{tweet.user}</p>
               <p><strong>Tweet:</strong> {tweet.body}</p>
               <p className="text-sm text-gray-500">
