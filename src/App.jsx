@@ -52,6 +52,7 @@ export default function App() {
             <div key={index} className="border p-4 rounded-lg bg-white shadow-md">
               <div className="flex justify-between items-center border-b pb-2 mb-2">
                 <span className="font-bold text-gray-800">@{tweet.user}</span>
+                <span className="text-sm text-gray-500">{tweet.date} - {tweet.time}</span>
               </div>
               <p><strong>Tweet:</strong> {tweet.body}</p>
               <div className="flex justify-between mt-4">
