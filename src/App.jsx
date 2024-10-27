@@ -54,7 +54,9 @@ export default function App() {
                 <span className="font-bold text-gray-800">@{tweet.user}</span>
                 <span className="text-sm text-gray-500">{tweet.date} - {tweet.time}</span>
               </div>
-              <p><strong>Tweet:</strong> {tweet.body}</p>
+              <div className="text-gray-700 text-base mb-4 border-b">
+                {tweet.body}
+              </div>
               <div className="flex justify-between mt-4">
                 <button
                   className="flex items-center text-blue-500 hover:text-blue-700 transition duration-200 ease-in-out transform hover:scale-110"
