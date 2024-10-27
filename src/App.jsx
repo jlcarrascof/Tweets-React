@@ -8,7 +8,24 @@ export default function App() {
   const [tweets, setTweets] = useState([])
 
   const addTweet = (newTweet) => {
-    setTweets([newTweet, ...tweets]);
+    const tweetWithInteractions = {
+      ...newTweet,
+      likes: 0,
+      retweets: 0
+    }
+    setTweets([tweetWithInteractions, ...tweets]);
+  }
+
+  const handleLike = (index) => {
+    const updatedTweets = [...tweets];
+    updatedTweets[index].likes += 1;
+    setTweets(updatedTweets);
+  }
+
+  const handleRetweet = (index) => {
+    const updatedTweets = [...tweets];
+    updatedTweets[index].retweets += 1;
+    setTweets(updatedTweets);
   }
 
   return (
@@ -33,11 +50,26 @@ export default function App() {
         <div className="mt-8 w-full max-w-md space-y-4">
           {tweets.map((tweet, index) => (
             <div key={index} className="border p-4 rounded-lg bg-white shadow-md">
-              <p><strong>Usuario:</strong> @{tweet.user}</p>
-              <p><strong>Cuerpo del Tweet:</strong> {tweet.body}</p>
+              <p><strong>User:</strong> @{tweet.user}</p>
+              <p><strong>Tweet:</strong> {tweet.body}</p>
               <p className="text-sm text-gray-500">
-                <strong>Fecha:</strong> {tweet.date} - <strong>Hora:</strong> {tweet.time}
+                <strong>Date:</strong> {tweet.date} - <strong>Time:</strong> {tweet.time}
               </p>
+              <div className="flex justify-between mt-4">
+                <button
+                  className="flex items-center text-blue-500 hover:text-blue-700 transition duration-200 ease-in-out transform hover:scale-110"
+                  onClick={() => handleLike(index)}
+                >
+                  Like 👍 <span className="ml-2">{tweet.likes}</span>
+                </button>
+
+                <button
+                  className="flex items-center text-green-500 hover:text-green-700 transition duration-200 ease-in-out transform hover:scale-110"
+                  onClick={() => handleRetweet(index)}
+                >
+                  Retweet 🔁 <span className="ml-2">{tweet.retweets}</span>
+                </button>
+              </div>
             </div>
           ))}
         </div>
