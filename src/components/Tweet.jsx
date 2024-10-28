@@ -15,6 +15,11 @@ export default function Tweet({ user, body, date, time, likes, retweets, onLike,
             {body}
         </div>
 
+        {/* footer of tweet */}
+
+        <div className="flex justify-between mt-4">
+
+        </div>
     </div>
 
 }
