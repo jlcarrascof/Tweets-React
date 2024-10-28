@@ -28,11 +28,10 @@ export default function Tweet({ user, body, date, time, likes, retweets, onLike,
 
             <button
                 className="flex items-center text-green-500 hover:text-green-700 transition duration-200 ease-in-out transform hover:scale-110"
-                onClick={() => handleRetweet(index)}
+                onClick={onRetweet}
             >
-                Retweet 🔁 <span className="ml-2">{tweet.retweets}</span>
+                Retweet 🔁 <span className="ml-2">{retweets}</span>
             </button>
-
 
         </div>
     </div>
