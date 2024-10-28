@@ -19,6 +19,13 @@ export default function Tweet({ user, body, date, time, likes, retweets, onLike,
 
         <div className="flex justify-between mt-4">
 
+            <button
+                className="flex items-center text-blue-500 hover:text-blue-700 transition duration-200 ease-in-out transform hover:scale-110"
+                  onClick={() => handleLike(index)}
+            >
+                Like 👍 <span className="ml-2">{tweet.likes}</span>
+            </button>
+
         </div>
     </div>
 
