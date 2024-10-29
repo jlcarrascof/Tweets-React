@@ -51,6 +51,18 @@ export default function App() {
         <div className="mt-8 w-full max-w-md space-y-4">
           {tweets.map((tweet, index) => (
 
+            <Tweet
+                key={index}
+                user={tweet.user}
+                body={tweet.body}
+                date={tweet.date}
+                time={tweet.time}
+                likes={tweet.likes}
+                retweets={tweet.retweets}
+                onLike={() => handleLike(index)}
+                onRetweet={() => handleRetweet(index)}
+            />
+
           ))}
         </div>
       </div>
