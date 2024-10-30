@@ -17,19 +17,23 @@ export default function App() {
       likes: 0,
       retweets: 0
     }
-    setTweets([tweetWithInteractions, ...tweets]);
+    setTweets([tweetWithInteractions, ...tweets])
   }
 
   const handleLike = (index) => {
-    const updatedTweets = [...tweets];
-    updatedTweets[index].likes += 1;
-    setTweets(updatedTweets);
+    const updatedTweets = [...tweets]
+    updatedTweets[index].likes += 1
+    setTweets(updatedTweets)
   }
 
   const handleRetweet = (index) => {
-    const updatedTweets = [...tweets];
+    const updatedTweets = [...tweets]
     updatedTweets[index].retweets += 1;
-    setTweets(updatedTweets);
+    setTweets(updatedTweets)
+  }
+
+  const handleRegister = (userData) => {
+    setUser(userData)
   }
 
   return (
