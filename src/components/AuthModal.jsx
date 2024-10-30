@@ -7,5 +7,9 @@ export default function AuthModal({ onClose, onRegister }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    return (
+        <div className='modal'>
 
+        </div>
+    )
 }
