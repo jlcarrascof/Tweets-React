@@ -7,6 +7,8 @@ export default function AuthModal({ onClose, onRegister }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    
+
     return (
         <div className='modal'>
             <div className='modal-content'>
@@ -21,7 +23,8 @@ export default function AuthModal({ onClose, onRegister }) {
                 <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
                 <button onClick={isLogin ? handleLogin : handleRegister}>{isLogin ? "Login" : "Register"}</button>
-
+                <button onClick={() => setIsLogin(!isLogin)}>{isLogin ? "Create an Account" : "Back to Login"}</button>
+                <button onClick={onClose}>Close</button>
             </div>
         </div>
     )
