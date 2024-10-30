@@ -8,6 +8,8 @@ import AuthModal from './components/AuthModal'
 export default function App() {
 
   const [tweets, setTweets] = useState([])
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null)
+  const [showModal, setShowModal] = useState(false)
 
   const addTweet = (newTweet) => {
     const tweetWithInteractions = {
