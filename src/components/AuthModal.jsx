@@ -1,46 +1,39 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 
-export default function AuthModal({ onClose, onRegister }) {
-  const [isLogin, setIsLogin] = useState(true)
+export default function AuthModal({ onClose, onRegister, mode }) {
+  const [isLogin, setIsLogin] = useState(mode === 'login')
   const [username, setUsername] = useState('')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  // Función para manejar el registro
+  // Efecto para cambiar el modo entre Login y Register según la prop `mode`
+  useEffect(() => {
+    setIsLogin(mode === 'login')
+  }, [mode]);
+
   const handleRegister = () => {
     const userData = { username, name, email, password }
-
-    // Obtener los usuarios del localStorage o un array vacío si no hay ninguno
     const users = JSON.parse(localStorage.getItem('users')) || []
-
-    // Añadir el nuevo usuario al array de usuarios
     users.push(userData)
-
-    // Guardar el array de usuarios actualizado en el localStorage
     localStorage.setItem('users', JSON.stringify(users))
+    onRegister(userData)
+    onClose()
+  };
 
-    onRegister(userData)  // Establece el usuario actual en el estado de la app
-    onClose()  // Cierra el modal
-  }
-
-  // Función para manejar el login
   const handleLogin = () => {
-    // Obtener los usuarios del localStorage o un array vacío si no hay ninguno
     const users = JSON.parse(localStorage.getItem('users')) || []
-
-    // Verificar si el usuario ingresado existe en la lista y si la contraseña es correcta
     const foundUser = users.find(
       user => user.username === username && user.password === password
     )
 
     if (foundUser) {
-      onRegister(foundUser)  // Inicia sesión con el usuario encontrado
-      onClose()  // Cierra el modal
+      onRegister(foundUser)
+      onClose()
     } else {
-      alert('Usuario o contraseña inválidos')  // Mostrar alerta si no coincide
+      alert('Usuario o contraseña inválidos')
     }
-  }
+  };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-20">
