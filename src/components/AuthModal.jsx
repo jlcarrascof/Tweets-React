@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
 export default function AuthModal({ onClose, onRegister }) {
   const [isLogin, setIsLogin] = useState(true)
@@ -7,20 +7,38 @@ export default function AuthModal({ onClose, onRegister }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  // Función para manejar el registro
   const handleRegister = () => {
     const userData = { username, name, email, password }
-    localStorage.setItem('user', JSON.stringify(userData))
-    onRegister(userData)
-    onClose()
-  };
 
+    // Obtener los usuarios del localStorage o un array vacío si no hay ninguno
+    const users = JSON.parse(localStorage.getItem('users')) || []
+
+    // Añadir el nuevo usuario al array de usuarios
+    users.push(userData)
+
+    // Guardar el array de usuarios actualizado en el localStorage
+    localStorage.setItem('users', JSON.stringify(users))
+
+    onRegister(userData)  // Establece el usuario actual en el estado de la app
+    onClose()  // Cierra el modal
+  }
+
+  // Función para manejar el login
   const handleLogin = () => {
-    const savedUser = JSON.parse(localStorage.getItem('user'))
-    if (savedUser && savedUser.username === username && savedUser.password === password) {
-      onRegister(savedUser);
-      onClose()
+    // Obtener los usuarios del localStorage o un array vacío si no hay ninguno
+    const users = JSON.parse(localStorage.getItem('users')) || []
+
+    // Verificar si el usuario ingresado existe en la lista y si la contraseña es correcta
+    const foundUser = users.find(
+      user => user.username === username && user.password === password
+    )
+
+    if (foundUser) {
+      onRegister(foundUser)  // Inicia sesión con el usuario encontrado
+      onClose()  // Cierra el modal
     } else {
-      alert('Usuario o contraseña inválidos');
+      alert('Usuario o contraseña inválidos')  // Mostrar alerta si no coincide
     }
   }
 
