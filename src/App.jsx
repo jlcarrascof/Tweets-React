@@ -38,7 +38,15 @@ export default function App() {
         <h1 className="text-3xl font-bold pl-8">Twitter/X Clone</h1>
         <div className="flex items-center space-x-4 pr-8">
 
-
+          {user ? (
+            <>
+              <span>Welcome, {user.username}!</span>
+              <button onClick={handleLogout}>Logout</button>
+            </>
+            ) : (
+            <button onClick={() => setShowModal(true)}>Login / Register</button>
+            )
+          }
 
           {/*
           <button className="flex items-center bg-white text-blue-500 py-1 px-4 rounded hover:bg-gray-100">
