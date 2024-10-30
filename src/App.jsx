@@ -71,7 +71,9 @@ export default function App() {
         </div>
       </header>
 
-      {showModal && <AuthModal onClose={() => setShowModal(false)} onRegister={handleRegister} />}
+      {showModal && (<AuthModal onClose={() => setShowModal(false)}
+        onRegister={handleRegister}/>)
+      }
 
       <div className="pt-10 flex-1 flex flex-col items-center mt-4">
         <TweetBox onTweetSubmit={addTweet} tweetCount={tweets.length} />
