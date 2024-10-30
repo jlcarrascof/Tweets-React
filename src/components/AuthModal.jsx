@@ -14,6 +14,16 @@ export default function AuthModal({ onClose, onRegister }) {
         onClose()
     }
 
+    const handleLogin = () => {
+        const savedUser = JSON.parse(localStorage.getItem('user'))
+        if (savedUser && savedUser.username === username && savedUser.password === password) {
+          onRegister(savedUser)
+          onClose();
+        } else {
+          alert('Usuario o contraseña inválidos')
+        }
+    }
+
     return (
         <div className='modal'>
             <div className='modal-content'>
