@@ -11,6 +11,13 @@ export default function AuthModal({ onClose, onRegister }) {
         <div className='modal'>
             <div className='modal-content'>
                 <h2>{isLogin ? "Login" : "Register" }</h2>
+                <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                {!isLogin && (
+                    <>
+                        <input type="text" placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)} />
+                        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    </>
+                )}
             </div>
         </div>
     )
