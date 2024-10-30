@@ -48,6 +48,8 @@ export default function App() {
             )
           }
 
+          {showModal && <AuthModal onClose={() => setShowModal(false)} onRegister={handleRegister} />}
+
           {/*
           <button className="flex items-center bg-white text-blue-500 py-1 px-4 rounded hover:bg-gray-100">
             <UserIcon className="h-5 w-5 mr-2" />
