@@ -9,7 +9,9 @@ export default function AuthModal({ onClose, onRegister }) {
 
     return (
         <div className='modal'>
-
+            <div className='modal-content'>
+                <h2>{isLogin ? "Login" : "Register" }</h2>
+            </div>
         </div>
     )
 }
