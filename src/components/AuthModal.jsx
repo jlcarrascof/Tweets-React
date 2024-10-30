@@ -18,6 +18,10 @@ export default function AuthModal({ onClose, onRegister }) {
                         <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                     </>
                 )}
+                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+
+                <button onClick={isLogin ? handleLogin : handleRegister}>{isLogin ? "Login" : "Register"}</button>
+
             </div>
         </div>
     )
