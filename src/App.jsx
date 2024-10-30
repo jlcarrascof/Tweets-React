@@ -3,6 +3,7 @@ import { UserIcon, UserPlusIcon } from '@heroicons/react/24/solid'
 import './App.css'
 import TweetBox from './components/TweetBox'
 import Tweet from './components/Tweet'
+import AuthModal from './components/AuthModal'
 
 export default function App() {
 
