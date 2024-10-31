@@ -1,44 +1,44 @@
-import { useState } from 'react';
-import { UserIcon, UserPlusIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/24/solid';
-import './App.css';
-import TweetBox from './components/TweetBox';
-import Tweet from './components/Tweet';
-import AuthModal from './components/AuthModal';
+import { useState } from 'react'
+import { UserIcon, UserPlusIcon, ArrowLeftOnRectangleIcon } from '@heroicons/react/24/solid'
+import './App.css'
+import TweetBox from './components/TweetBox'
+import Tweet from './components/Tweet'
+import AuthModal from './components/AuthModal'
 
 export default function App() {
-  const [tweets, setTweets] = useState([]);
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null);
-  const [showModal, setShowModal] = useState(false);
-  const [modalMode, setModalMode] = useState('login');  // nuevo estado para controlar el modo del modal
+  const [tweets, setTweets] = useState([])
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null)
+  const [showModal, setShowModal] = useState(false)
+  const [modalMode, setModalMode] = useState('login')  // nuevo estado para controlar el modo del modal
 
   const addTweet = (newTweet) => {
     const tweetWithInteractions = {
       ...newTweet,
       likes: 0,
       retweets: 0,
-    };
-    setTweets([tweetWithInteractions, ...tweets]);
-  };
+    }
+    setTweets([tweetWithInteractions, ...tweets])
+  }
 
   const handleLike = (index) => {
-    const updatedTweets = [...tweets];
-    updatedTweets[index].likes += 1;
-    setTweets(updatedTweets);
+    const updatedTweets = [...tweets]
+    updatedTweets[index].likes += 1
+    setTweets(updatedTweets)
   };
 
   const handleRetweet = (index) => {
-    const updatedTweets = [...tweets];
-    updatedTweets[index].retweets += 1;
-    setTweets(updatedTweets);
+    const updatedTweets = [...tweets]
+    updatedTweets[index].retweets += 1
+    setTweets(updatedTweets)
   };
 
   const handleRegister = (userData) => {
-    setUser(userData);
+    setUser(userData)
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('user');
-    setUser(null);
+    localStorage.removeItem('user')
+    setUser(null)
   };
 
   return (
