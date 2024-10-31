@@ -7,7 +7,6 @@ export default function AuthModal({ onClose, onRegister, mode }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  // Efecto para cambiar el modo entre Login y Register según la prop `mode`
   useEffect(() => {
     setIsLogin(mode === 'login')
   }, [mode]);
@@ -31,7 +30,7 @@ export default function AuthModal({ onClose, onRegister, mode }) {
       onRegister(foundUser)
       onClose()
     } else {
-      alert('Usuario o contraseña inválidos')
+      alert('Invalid username or password')
     }
   };
 
