@@ -1,46 +1,102 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 
-export default function AuthModal({ onClose, onRegister }) {
-    const [isLogin, setIsLogin] = useState(true)
-    const [username, setUsername] = useState('')
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+export default function AuthModal({ onClose, onRegister, mode }) {
+  const [isLogin, setIsLogin] = useState(mode === 'login')
+  const [username, setUsername] = useState('')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-    const handleRegister = () => {
-        const userData = { username, name, email, password }
-        localStorage.setItem('user', JSON.stringify(userData))
-        onRegister(userData)
-        onClose()
-    }
+  useEffect(() => {
+    setIsLogin(mode === 'login')
+  }, [mode]);
 
-    const handleLogin = () => {
-        const savedUser = JSON.parse(localStorage.getItem('user'))
-        if (savedUser && savedUser.username === username && savedUser.password === password) {
-          onRegister(savedUser)
-          onClose();
-        } else {
-          alert('Usuario o contraseña inválidos')
-        }
-    }
+  const handleRegister = () => {
+    const userData = { username, name, email, password }
+    const users = JSON.parse(localStorage.getItem('users')) || []
+    users.push(userData)
+    localStorage.setItem('users', JSON.stringify(users))
+    onRegister(userData)
+    onClose()
+  };
 
-    return (
-        <div className='modal'>
-            <div className='modal-content'>
-                <h2>{isLogin ? "Login" : "Register" }</h2>
-                <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                {!isLogin && (
-                    <>
-                        <input type="text" placeholder="Full Name" value={name} onChange={(e) => setName(e.target.value)} />
-                        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </>
-                )}
-                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-
-                <button onClick={isLogin ? handleLogin : handleRegister}>{isLogin ? "Login" : "Register"}</button>
-                <button onClick={() => setIsLogin(!isLogin)}>{isLogin ? "Create an Account" : "Back to Login"}</button>
-                <button onClick={onClose}>Close</button>
-            </div>
-        </div>
+  const handleLogin = () => {
+    const users = JSON.parse(localStorage.getItem('users')) || []
+    const foundUser = users.find(
+      user => user.username === username && user.password === password
     )
+
+    if (foundUser) {
+      onRegister(foundUser)
+      onClose()
+    } else {
+      alert('Invalid username or password')
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-20">
+      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md relative">
+        <h2 className="text-2xl font-bold mb-4">{isLogin ? "Login" : "Register"}</h2>
+
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="w-full mb-2 p-2 border rounded"
+        />
+
+        {!isLogin && (
+          <>
+            <input
+              type="text"
+              placeholder="Full Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full mb-2 p-2 border rounded"
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full mb-2 p-2 border rounded"
+            />
+          </>
+        )}
+
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full mb-4 p-2 border rounded"
+        />
+
+        <div className="flex justify-between items-center">
+          <button
+            onClick={isLogin ? handleLogin : handleRegister}
+            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+          >
+            {isLogin ? "Login" : "Register"}
+          </button>
+
+          <button
+            onClick={() => setIsLogin(!isLogin)}
+            className="text-blue-500 hover:underline"
+          >
+            {isLogin ? "Create an Account" : "Back to Login"}
+          </button>
+        </div>
+
+        <button
+          onClick={onClose}
+          className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+        >
+          ✖️
+        </button>
+      </div>
+    </div>
+  )
 }
