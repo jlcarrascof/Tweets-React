@@ -9,7 +9,7 @@ export default function App() {
   const [tweets, setTweets] = useState([])
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null)
   const [showModal, setShowModal] = useState(false)
-  const [modalMode, setModalMode] = useState('login')  // nuevo estado para controlar el modo del modal
+  const [modalMode, setModalMode] = useState('login')
 
   const addTweet = (newTweet) => {
     const tweetWithInteractions = {
@@ -59,7 +59,6 @@ export default function App() {
             </>
           ) : (
             <>
-              {/* Botón para Login */}
               <button
                 onClick={() => {
                   setModalMode('login')
@@ -71,7 +70,6 @@ export default function App() {
                 Login
               </button>
 
-              {/* Botón para Register */}
               <button
                 onClick={() => {
                   setModalMode('register')
@@ -87,12 +85,11 @@ export default function App() {
         </div>
       </header>
 
-      {/* Mostrar AuthModal en el modo correspondiente */}
       {showModal && (
         <AuthModal
           onClose={() => setShowModal(false)}
           onRegister={handleRegister}
-          mode={modalMode}  // enviar el modo al AuthModal
+          mode={modalMode}
         />
       )}
 
