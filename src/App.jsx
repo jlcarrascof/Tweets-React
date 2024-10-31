@@ -24,22 +24,22 @@ export default function App() {
     const updatedTweets = [...tweets]
     updatedTweets[index].likes += 1
     setTweets(updatedTweets)
-  };
+  }
 
   const handleRetweet = (index) => {
     const updatedTweets = [...tweets]
     updatedTweets[index].retweets += 1
     setTweets(updatedTweets)
-  };
+  }
 
   const handleRegister = (userData) => {
     setUser(userData)
-  };
+  }
 
   const handleLogout = () => {
     localStorage.removeItem('user')
     setUser(null)
-  };
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
