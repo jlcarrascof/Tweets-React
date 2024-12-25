@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function TweetBox({ onTweetSubmit, tweetCount }) {
+export default function TweetBox({ onTweetSubmit, tweetCount, user }) {
   const [tweet, setTweet] = useState('');
   const maxLength = 150;
 
@@ -13,7 +13,7 @@ export default function TweetBox({ onTweetSubmit, tweetCount }) {
   const handleTweetSubmit = () => {
     const now = new Date();
     const newTweet = {
-      user: 'username',
+      user: user?.username || 'Guest',
       body: tweet,
       date: now.toLocaleDateString(),
       time: now.toLocaleTimeString(),

@@ -24,22 +24,22 @@ export default function App() {
     const updatedTweets = [...tweets]
     updatedTweets[index].likes += 1
     setTweets(updatedTweets)
-  };
+  }
 
   const handleRetweet = (index) => {
     const updatedTweets = [...tweets]
     updatedTweets[index].retweets += 1
     setTweets(updatedTweets)
-  };
+  }
 
   const handleRegister = (userData) => {
     setUser(userData)
-  };
+  }
 
   const handleLogout = () => {
     localStorage.removeItem('user')
     setUser(null)
-  };
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -94,7 +94,7 @@ export default function App() {
       )}
 
       <div className="pt-10 flex-1 flex flex-col items-center mt-4">
-        <TweetBox onTweetSubmit={addTweet} tweetCount={tweets.length} />
+        <TweetBox onTweetSubmit={addTweet} tweetCount={tweets.length} user  = {user} />
 
         <div className="mt-8 w-full max-w-md space-y-4">
           {tweets.map((tweet, index) => (
